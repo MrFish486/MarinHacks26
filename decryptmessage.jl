@@ -11,7 +11,7 @@ function decryptmessage(pw, checksum, echecksum, msg)
     if c == checksum
         decryptedmsg = RSAdecrypt(privkey, bytes2bigint.(msg))
         splitted = split(decryptedmsg,',',limit=3)
-        senderID = join(splitted[1],',',splitted[2])
+        senderID = join([splitted[1],",",splitted[2]])
         messagedata = splitted[end]
         print(senderID, " ", Base64.base64encode(messagedata))
     else
