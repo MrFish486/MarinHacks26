@@ -1,2 +1,2 @@
 include("verification.jl")
-println()
+println(bytes2bigint(read("public.key")),",",bytes2bigint(read("n.key")),)
