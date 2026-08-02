@@ -47,7 +47,7 @@ div.box {
 	border-radius: 20px;
 	background-color: var(--c6);
 	transition: 0.5s;
-	opacity: 0.6;
+	opacity: 0.9;
 }
 
 div.box:hover {
@@ -58,4 +58,59 @@ div.box:hover {
 
 br.spacer {
 	margin-top: 20px;
+}
+
+div.box-ne {
+	padding: 5px;
+	text-align: center;
+	width: 35%;
+	height: 90%;
+	border-radius: 20px;
+	background-color: var(--c6);
+	transition: 0.5s;
+	overflow: scroll;
+	float: left;
+}
+
+div.box-ne-right {
+	margin-left: 1%;
+	padding: 5px;
+	text-align: center;
+	width: 60%;
+	height: 90%;
+	border-radius: 20px;
+	background-color: var(--c6);
+	transition: 0.5s;
+	overflow: scroll;
+	float: left;
+}
+
+div.below-box-ne {
+	position: absolute;
+	bottom: 10px;
+}
+
+a[href] {
+	color: var(--c7);
+}
+
+hr {
+	border: none;
+	background-color: var(--c2);
+	height: 2px;
+}
+
+div.message {
+	background-color: var(--c6);
+	border-bottom: 1px solid var(--c2);
+	margin-bottom: 0px;
+	padding: 5px;
+	transition: 0.5s;
+	border-radius: 10px;
+}
+
+div.message:hover {
+	background-color: var(--c7);
+	padding-bottom: 10px;
+	padding-top: 10px;
 }
