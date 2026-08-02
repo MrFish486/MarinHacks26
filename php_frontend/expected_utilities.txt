@@ -1,1 +1,2 @@
 "verify.jl" - takes 1 argument, password, prints 1 thing : true or false
+x "fetch.jl" - takes 1 argument, password, prints 1 thing : the mail in serialized form (JSON or whatever)
