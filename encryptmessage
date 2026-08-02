@@ -4,8 +4,10 @@ function encryptmessage(msg, recipient)
     n = bytes2bigint(read("n.key"))
     pubkey = bytes2bigint(read("public.key"))
     messagebody = "$pubkey,$n,$msg"
-    message = RSAencrypt(parse.(BigInt,split(recipient,',')), messagebody)
-    println(Base64.base64encode())
+    message = bigint2bytes.(RSAencrypt(parse.(BigInt,split(recipient,',')), messagebody))
+    dg = digest("sha256",message)
+    edg = bigint2bytes(RSAencrypt(parse.(BigInt,split(recipient,',')), String(dg))[1])
+    print(Base64.base64encode(dg)," ",Base64.base64encode(edg), " ", join(Base64.base64encode.(message), " "))
 end
-encryptmessage(ARGS[1])
+encryptmessage(ARGS[1], ARGS[2])
 # julia encryptmessage.jl "message" recipient(publickey,n) -> Base64(checksum encryptedchecksum messagebody...)
