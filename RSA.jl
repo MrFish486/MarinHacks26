@@ -1,3 +1,4 @@
+# Copyright Oskar Pav 2026
 import Random
 function probablyprime(n::BigInt, itr)
 	isprime = true

@@ -12,3 +12,5 @@ function createkey(pw)
     write("private.key",salt,ct)
 end
 createkey(ARGS[1])
+
+# julia createkey.jl pw -> nothing
