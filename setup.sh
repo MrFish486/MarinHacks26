@@ -5,6 +5,8 @@
 
 mkdir data
 
+echo '{"msg":[]}' > data/record.json
+
 open http://localhost:8080/index.php
 
 {

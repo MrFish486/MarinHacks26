@@ -9,7 +9,7 @@ $disp_mesg = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
 	$pw = escapeshellarg($_POST["password"]);
-	if (shell_exec("julia ../verifypassword.jl $pw") == "true") {
+	if (shell_exec("julia ../unitverify.jl $pw") == "true") {
 		$_SESSION["password"] = $pw;
 		header("Location: index.php");
 		file_put_contents("../data/password.key", $_SESSION["password"]);
