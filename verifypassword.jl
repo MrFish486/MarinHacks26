@@ -1,11 +1,12 @@
 include("RSA.jl")
-using AES, SHA
+using Nettle
 function verifypassword(pw::String)
-    hashed = SHA.sha256(pw)
-    pw = nothing
-    k = AES.AES256Key(hashed)
-    c = AESCipher(;key_length=256, mode=AES.CBC, key=k)
-    k = nothing
     privkey = read("private.key")
-    println(privkey, "\n", decrypt(privkey, c))
+    (key32, iv16) = gen_key32_iv16(Vector{UInt8}(pw), privkey[begin:begin+15])
+    pw = nothing
+    dt = decrypt("AES256", :CBC, iv16, key32, privkey[begin+16:end])
+    println((bytes2bigint(trim_padding_PKCS5(dt))))
 end
+
+verifypassword(ARGS[1])
+

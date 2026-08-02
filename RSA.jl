@@ -163,7 +163,7 @@ function bigint2bytes(b::BigInt)
     return bytes
 end
 
-function RSAencrypt(key::Vector{BigInt}, data::String, maxchunklen::Int = 16384)
+function RSAencrypt(key::Vector{BigInt}, data::String, maxchunklen::Int = 2048)
 	keylen = Int(floor(log2(key[1])))
 	bytesperchunk = min(Int(div(keylen, 8, RoundDown)) - 1,maxchunklen)
 	data2encrypt = Vector{BigInt}()

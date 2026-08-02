@@ -19,3 +19,4 @@
  - Users have a handle (their public key)
     - Their private key is stored encrypted using AES with their password
     - To verify the password, the private key is unencrypted with it and then used to unencrypt a dummy text
+    - private key format: private.key first 16 bytes are IV, the rest is the private key
