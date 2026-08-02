@@ -1,0 +1,6 @@
+"Safety"
+
+ - secure messaging
+ \-> * decentralized
+     * run app which starts web server with UI on localhost:whatever
+     * 
