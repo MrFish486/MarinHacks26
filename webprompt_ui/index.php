@@ -7,6 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if (isset($_POST["password"]) && preg_match("/^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$/", $_POST["password"]) && isset($_POST["ver"]) && $_POST["ver"] == $_POST["password"]) {
 		$pw = escapeshellarg($_POST["password"]);
 		shell_exec("julia ../createkey.jl $pw");
+		shell_exec("pkill php");
 		exit;
 	} else {
 		$message = "Please make sure your password meets the following criteria:";

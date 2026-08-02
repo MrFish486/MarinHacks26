@@ -3,6 +3,14 @@
 # 
 # Setup script for *Hemlock*
 
+open http://localhost:8080/index.php
+
+{
+	cd webprompt_ui
+	php -S localhost:8080
+}
+
 julia setup.jl
+
 
 # End.
