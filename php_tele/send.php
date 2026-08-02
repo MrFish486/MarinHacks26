@@ -12,5 +12,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$csum = escapeshellarg($_POST["CHECKSUM"]);
 	$csumenc = escapeshellarg($_POST["ENCRYPTEDCHECKSUM"]);
 	$encmesg = escapeshellarg($_POST["ENCRYPTEDMESSAGE"]);
-	shell_exec("julia ../decryptmessage.jl $pw $csum $csumenc $encmesg");
+	
+	$call = shell_exec("julia ../decryptmessage.jl $pw $csum $csumenc $encmesg");
+	
+	$cur = json_decode(file_get_contents("../data/record.json"), true);
+	
+	array_push($cur["msg"], ["author" => explode(" ", $call)[0], "text" => explode(" ", $call)[1]);
+
+	file_put_contents("../data/record.json", json_encode($cur));
 }
