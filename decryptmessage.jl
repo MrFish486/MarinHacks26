@@ -1,12 +1,13 @@
 include("verification.jl")
 import Base64
 function decryptmessage(pw, checksum, echecksum, msg)
+    local pubkey, privkey
     try
-        pub, priv = verifypassword(pw)
+        pubkey, privkey = verifypassword(pw)
     catch
         return false
     end
-    c = Vector{UInt8}(RSAdecrypt(privkey, bytes2bigint(echecksum)))
+    c = Vector{UInt8}(RSAdecrypt(privkey, [bytes2bigint(echecksum)]))
     if c == checksum
         decryptedmsg = RSAdecrypt(privkey, bytes2bigint.(msg))
         splitted = split(decryptedmsg,',',limit=3)
@@ -17,5 +18,5 @@ function decryptmessage(pw, checksum, echecksum, msg)
         print(false)
     end
 end
-decryptmessage(ARGS[1],Base64.base64decode(ARGS[2]),Base64.base64decode(ARGS[3]),Base64.base64decode.(ARGS[4:end]))
+decryptmessage(ARGS[1],Base64.base64decode(ARGS[2]),Base64.base64decode(ARGS[3]),Base64.base64decode.(split(ARGS[4],' ')))
 # julia decryptmessage.jl pw checksum encryptedchecksum message(many chunks of data separated by spaces) -> false OR [senderID(publickey,n) message data]
