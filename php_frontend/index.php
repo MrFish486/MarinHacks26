@@ -12,6 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["password"])) {
 	if (shell_exec("julia ../verifypassword.jl $pw") == "true") {
 		$_SESSION["password"] = $pw;
 		header("Location: index.php");
+		file_put_contents("../data/password.key", $_SESSION["password"]);
 		exit;
 	} else {
 		$message = "Uh-oh! You entered the wrong password.";

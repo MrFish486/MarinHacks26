@@ -3,6 +3,8 @@
 # 
 # Setup script for *Hemlock*
 
+mkdir data
+
 open http://localhost:8080/index.php
 
 {
