@@ -4,3 +4,16 @@
  \-> * decentralized
      * run app which starts web server with UI on localhost:whatever
      * 
+ - Localhost webserver in PHP
+ - Backend in Julia using RSA library
+ - Use sockets
+    - Keeps a certain port open, waits for incoming messages.
+ - Message format:
+    - Checksum of part 3, unencrypted (message ID)
+    - Checksum of part 3, encrypted (Recipient verification)
+    - Part 3: Sender Handle + actual message, encrypted (Data)
+ - Incoming messages have their Rv decrypted using the user's key
+    - checksums are compared. If they match, message is saved in inbox
+    - if they don't, MID is put in DB of messages to relay
+    - messages are rejected as soon as a known MID is transmitted
+ - Users have a handle (their public key)
