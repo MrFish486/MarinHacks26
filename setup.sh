@@ -3,4 +3,6 @@
 # 
 # Setup script for *Hemlock*
 
-# End. Nothing here yet.
+julia setup.jl
+
+# End.
