@@ -8,12 +8,13 @@
  - Backend in Julia using RSA library
  - Use sockets
     - Keeps a certain port open, waits for incoming messages.
+    - Looks for other machines on network with said open port and relays messages to them
  - Message format:
     - Checksum of part 3, unencrypted (message ID)
     - Checksum of part 3, encrypted (Recipient verification)
     - Part 3: Sender Handle + actual message, encrypted (Data)
  - Incoming messages have their Rv decrypted using the user's key
     - checksums are compared. If they match, message is saved in inbox
-    - if they don't, MID is put in DB of messages to relay
-    - messages are rejected as soon as a known MID is transmitted
+    - if they don't, message is instantly randomly relayed to one more computer and then discarded
  - Users have a handle (their public key)
+    - Their private key is stored encrypted using AES with their password
