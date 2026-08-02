@@ -18,3 +18,4 @@
     - if they don't, message is instantly randomly relayed to one more computer and then discarded
  - Users have a handle (their public key)
     - Their private key is stored encrypted using AES with their password
+    - To verify the password, the private key is unencrypted with it and then used to unencrypt a dummy text
