@@ -8,6 +8,7 @@ function createkey(pw)
     write("public.key",p[2])
     write("n.key",p[1])
     ct = encrypt("AES256", :CBC, iv16, key32, add_padding_PKCS5(bigint2bytes(priv[2]), 16))
+    println(priv[2])
     write("private.key",salt,ct)
 end
 createkey(ARGS[1])
