@@ -1,8 +1,8 @@
 include("RSA.jl")
 using Nettle
 function verifypassword(pw::String)
-    privkey = read("private.key")
-    pub = bytes2bigint(read("public.key"))
+    privkey = read("../private.key")
+    pub = bytes2bigint(read("../public.key"))
     n = bytes2bigint(read("n.key"))
     (key32, iv16) = gen_key32_iv16(Vector{UInt8}(pw), privkey[begin:begin+15])
     pw = nothing

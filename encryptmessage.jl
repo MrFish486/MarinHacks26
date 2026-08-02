@@ -1,9 +1,8 @@
 include("verification.jl")
-println(pwd())
 import Base64
 function encryptmessage(msg, recipient)
-    n = bytes2bigint(read("n.key"))
-    pubkey = bytes2bigint(read("public.key"))
+    n = bytes2bigint(read("../n.key"))
+    pubkey = bytes2bigint(read("../public.key"))
     messagebody = "$pubkey,$n,$msg"
     message = bigint2bytes.(RSAencrypt(parse.(BigInt,split(recipient,',')), messagebody))
     dg = digest("sha256",message)
