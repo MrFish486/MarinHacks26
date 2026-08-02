@@ -1,4 +1,5 @@
 include("verification.jl")
+println(pwd())
 import Base64
 function encryptmessage(msg, recipient)
     n = bytes2bigint(read("n.key"))
