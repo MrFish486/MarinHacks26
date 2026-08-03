@@ -25,6 +25,7 @@ $mail = json_decode($file_content, true)["msg"];
 				<h1>Inbox - <?= count($mail) ?> message<?= count($mail) != 1 ? "s" : "" ?></h1>
 				<hr></hr>
 				<a href="compose.php">compose message</a>
+				<a href="adbook.php">address book</a>
 				<hr></hr>
 				<?php if (count($mail) == 0) { ?>
 					<h2>No messages.</h2>

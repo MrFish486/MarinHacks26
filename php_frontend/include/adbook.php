@@ -7,4 +7,15 @@ function adbook_lookup ($address) {
 	return $address;
 }
 
+function adbook_add ($address, $name) {
+	$adbook = json_decode(file_get_contents("../data/adbook.json"), true);
+	$adbook["adr"][$address] = $name;
+	file_put_contents("../data/adbook.json", json_encode($adbook));
+}
+
+function adbook_list () {
+	$adbook = json_decode(file_get_contents("../data/adbook.json"), true);
+	return $adbook["adr"];
+}
+
 ?>
