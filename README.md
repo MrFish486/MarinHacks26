@@ -1,0 +1,2 @@
+# Hemloc
+Hemloc is a privacy-first messaging platform. It is fully decentralized, with no visible metadata. Hemloc users can communicate over a network with complete anonymity and privacy; nobody can read messages you send except the intended recipient, and nobody can tell who the intended recipient is or who sent the message. Any man in the middle cannot gain any information whatsoever on network activity, and even a full packet log can only tell who sent messages onto the network.
