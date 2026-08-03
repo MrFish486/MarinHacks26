@@ -127,3 +127,7 @@ textarea {
 	border-radius: 10px;
 	padding: 5px;
 }
+
+h3 {
+	overflow-wrap: break-word;
+}

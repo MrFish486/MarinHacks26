@@ -6,6 +6,7 @@
 mkdir data
 
 echo '{"msg":[]}' > data/record.json
+echo '{"adr":[]}' > data/adbook.json
 
 open http://localhost:8080/index.php
 
