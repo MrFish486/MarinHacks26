@@ -29,7 +29,7 @@ $mail = json_decode($file_content, true)["msg"];
 				<?php } else { ?>
 					<?php for ($i = 0; $i < count($mail); $i ++) { ?>
 						<div class="message" onclick='document.getElementById("mesg_text").innerText = "<?= $mail[$i]["text"] ?>"; document.getElementById("mesg_author").innerText = "from: <?= $mail[$i]["author"] ?>"; document.getElementById("mesg_menu").classList.remove("hidden"); document.getElementById("mesg_delete").href=`delete.php?i=<?= $i ?>`'>
-							<h1><?= $i ?> message from <?= htmlspecialchars($mail[$i]["author"]) ?></h1>
+							<h1>message from <?= htmlspecialchars($mail[$i]["author"]) ?></h1>
 						</div>
 					<?php } ?>
 				<?php } ?>
