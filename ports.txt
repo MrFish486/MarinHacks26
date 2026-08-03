@@ -1,0 +1,4 @@
+ports :
+
+	8080 - main frontend
+	8013 - php_tele server

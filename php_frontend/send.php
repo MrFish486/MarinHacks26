@@ -4,18 +4,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["recip"]) && isset($_PO
 	$recip = escapeshellarg($_POST["recip"]);
 	$mesg = escapeshellarg($_POST["mesg"]);
 	$to_send = shell_exec("julia ../encryptmessage.jl $mesg $recip");
-	var_dump($to_send);
-	echo "sending to myself cuz thats THATS HOW IT WORKS OK";
-	
-	$o_ar = explode(" ", $to_send);
 	
 	// ok, so now we can access the variables for final transmission (will send through loopback to php_tele server)
 	
-	$checksum = base64_decode($o_ar[0]);
-	$enccheck = base64_decode($o_ar[1]);
-	$mesgbody = base64_decode($o_ar[2]);
+	$data = ["DATABLOCK" => $to_send];
+	$headers = ["Content-type: application/x-www-form-urlencoded"];
+
+	$opt = [
+		"http" => [
+			"header" => $headers,
+			"method" => "POST",
+			"content" => http_build_query($data),
+			"ignore_errors" => true
+		]
+	];
 	
-	
+	$context = stream_context_create($opt);
+	$response = file_get_contents("http://localhost:8013/send.php", false, $context);
+
+	header("Location: /home.php");
+	exit;
 }
 
 ?>
